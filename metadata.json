@@ -1,0 +1,8 @@
+{
+  "name": "IOSH Independent Certificate Document Viewer",
+  "description": "Independent document viewer and local record verification for IOSH certificates with high-fidelity PDF inspection controls.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
