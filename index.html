@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Independent Certificate Document Viewer</title>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <link href="assets/css/vendors.bundle.css" rel="stylesheet">
+    <link href="assets/css/style.bundle.css" rel="stylesheet">
+    <link href="assets/css/all.css" rel="stylesheet">
+    <link href="assets/css/core.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/overrides-accessibility-mvc.css" rel="stylesheet">
+    <link href="assets/css/overrides-accessibility.css" rel="stylesheet">
+    <link href="assets/css/original-match.css?v=20261102" rel="stylesheet">
+</head>
+
+<body class="print-progress--fixed kt-page--loading-enabled kt-page--fixed kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-subheader--enabled kt-subheader--transparent page-dashboard">
+
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper"
+                 id="kt_wrapper">
+
+                <header id="m_header" class="kt-grid__item m-header">
+                    <div class="kt-header__top">
+                        <div class="kt-container">
+                            <ul class="kt-topbar__nav kt-nav kt-nav--inline"></ul>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-grid--stretch">
+                    <div class="kt-container kt-body kt-grid kt-grid--ver" id="kt_body">
+                        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+                            <div id="svpPortlet" class="kt-portlet">
+                                <div class="kt-portlet__body">
+
+                                    <div class="kt-header__brand-logo mb-4">
+                                        <img
+                                            alt="IOSH Training"
+                                            src="assets/images/logo-default.png"
+                                            class="kt-header__brand-logo-default">
+
+                                        <img
+                                            alt="Smart Verify Plus"
+                                            src="assets/images/Smart-Verify-Plus-Logo.png"
+                                            class="kt-header__brand-sublogo-default pull-right">
+                                    </div>
+
+                                    <div id="verificationAlert"
+                                         class="alert alert-info"
+                                         role="status">
+
+                                        <div class="alert-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 width="24"
+                                                 height="24"
+                                                 viewBox="0 0 24 24"
+                                                 aria-hidden="true">
+                                                <circle cx="12" cy="12" r="9.5"
+                                                        fill="none" stroke="#fff"
+                                                        stroke-width="2"/>
+                                                <path d="m8.3 12.7 2.5 2.5 4.9-5.4"
+                                                      fill="none" stroke="#fff"
+                                                      stroke-width="2.1"
+                                                      stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <div class="alert-text">
+                                            Loading local record…
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="documentViewerContainer"
+                                                 class="report-viewer-container">
+
+                                                <iframe
+                                                    id="documentViewerFrame"
+                                                    src="about:blank"
+                                                    title="Independent PDF document viewer"
+                                                    class="w-100 h-100"
+                                                    frameborder="0"
+                                                    style="border:none;">
+                                                </iframe>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kt-footer kt-footer--extended kt-grid__item">
+                    <div class="kt-footer__bottom">
+                        <div class="kt-container">
+                            <div class="kt-footer__wrapper">
+
+                                <div class="kt-footer__copyright">
+                                    2026 © DSSL
+                                </div>
+
+                                <div class="kt-footer__menu">
+                                    <a href="https://very.iosh.com/Pages/Privacy"
+                                       class="btn-md">Privacy</a>
+
+                                    <a href="https://very.iosh.com/Pages/Faq"
+                                       class="btn-md">FAQ</a>
+
+                                    <a href="https://very.iosh.com/Pages/Cookies"
+                                       class="btn-md">Cookies</a>
+
+                                    <a href="https://very.iosh.com/Pages/Terms"
+                                       class="btn-md">Terms</a>
+
+                                    <a href="https://very.iosh.com/Pages/Support"
+                                       class="btn-md">Support</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn" type="button" title="Back to top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="#fff"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script src="data/students.js"></script>
+
+    <script>
+    /* The inner viewer reports its real content height; the container
+       hugs it exactly so no grey band remains below the certificate. */
+    window.addEventListener("message", function (event) {
+        var data = event.data;
+        if (data && typeof data.__viewerHeight === "number") {
+            var container = document.getElementById("documentViewerContainer");
+            if (container) {
+                container.style.height = Math.max(320, Math.round(data.__viewerHeight)) + "px";
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var params = new URLSearchParams(window.location.search);
+        var ref = (params.get("ref") || "").trim();
+        var frame = document.getElementById("documentViewerFrame");
+
+        if (!ref) {
+            showAlert(
+                "warning",
+                "No reference number provided. Please use a valid record link like: " +
+                "<code>?ref=93548623-01-MYX8</code>"
+            );
+            return;
+        }
+
+        /* Defensive lookup: tolerates accidental stray spaces in data keys. */
+        var studentsMap = window.STUDENTS || {};
+        var student = null;
+        for (var key in studentsMap) {
+            if (Object.prototype.hasOwnProperty.call(studentsMap, key) && key.trim() === ref) {
+                student = studentsMap[key];
+                break;
+            }
+        }
+
+        if (!student) {
+            showAlert(
+                "danger",
+                "No local record found for reference: <strong>" + esc(ref) + "</strong>"
+            );
+            return;
+        }
+
+        if (student.status === "valid") {
+            /*
+             * Local-record notice only. This page performs no official
+             * verification and makes no validity claim.
+             */
+            var message =
+                "Local record of a document issued by IOSH (" +
+                "Institution of Occupational Safety and Health) to " +
+                esc((student.name || "").trim()) +
+                " on " +
+                formatIssueDate(student.issueDate) +
+                ".";
+
+            showAlert("success", message);
+        } else {
+            showAlert(
+                "danger",
+                "This local record is not marked as valid. " +
+                "Confirm its status through the official issuing organization."
+            );
+            return;
+        }
+
+        if (student.pdf) {
+            frame.src =
+                "pages/viewer.html?pdf=" +
+                encodeURIComponent((student.pdf || "").trim()) +
+                "&v=20261102";
+        }
+
+        initScrollTop();
+    });
+
+    /* Render the date exactly as the reference page renders it in an LTR
+       sentence (same bidi outcome), without reordering anything by hand. */
+    function formatIssueDate(value) {
+        var raw = String(value == null ? "" : value).trim();
+        return esc(raw);
+    }
+
+    function initScrollTop() {
+        var btn = document.getElementById("scrollTopBtn");
+        function sync() {
+            var show = window.scrollY > 300;
+            btn.classList.toggle("is-visible", show);
+            btn.style.opacity = show ? "1" : "0";
+            btn.style.visibility = show ? "visible" : "hidden";
+        }
+        window.addEventListener("scroll", sync, { passive: true });
+        btn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        sync();
+    }
+
+    function showAlert(type, html) {
+        var box = document.getElementById("verificationAlert");
+
+        var icons = {
+            info:
+                '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">' +
+                '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>' +
+                '<path d="M12 10v7M12 7h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+                '</svg>',
+
+            /* Circled check — matches the reference status mark geometry. */
+            success:
+                '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">' +
+                '<circle cx="12" cy="12" r="9.5" fill="none" stroke="#fff" stroke-width="2"/>' +
+                '<path d="m8.3 12.7 2.5 2.5 4.9-5.4" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>' +
+                '</svg>',
+
+            warning:
+                '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">' +
+                '<path d="M12 3 22 21H2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>' +
+                '<path d="M12 9v5m0 3h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+                '</svg>',
+
+            danger:
+                '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">' +
+                '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>' +
+                '<path d="m8.5 8.5 7 7m0-7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+                '</svg>'
+        };
+
+        box.className = "alert alert-" + type;
+
+        box.innerHTML =
+            '<div class="alert-icon">' +
+            (icons[type] || icons.info) +
+            '</div>' +
+            '<div class="alert-text">' + html + '</div>';
+    }
+
+    function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[c];
+        });
+    }
+    </script>
+
+</body>
+</html>

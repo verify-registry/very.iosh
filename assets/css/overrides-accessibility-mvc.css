@@ -1,0 +1,75 @@
+﻿.kt-login__logo img {
+    width: 100%;
+    height: auto;
+    max-width: 284px;
+}
+
+.kt-login__title {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+    .kt-login__title h1 {
+        font-size: 1.75rem;
+    }
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-group > .form-control {
+    border: 1px solid #CED4DA;
+}
+
+body .form-control:focus, body .form-control:active {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+    border-color: #86B7FE;
+}
+
+body .btn:focus-visible, body .btn:focus-visible:not(.btn-elevate) {
+    border: 1px dashed black !important;
+}
+
+@media (min-width: 1025px) {
+    .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here > .kt-menu__link,
+    .kt-header-menu .kt-menu__nav > .kt-menu__item .kt-menu__link:focus {
+        background-color: #5569AF;
+    }
+}
+
+.kt-font-success {
+    color: #007A5A !important;
+}
+
+.text-success {
+    color: #007A5A !important;
+}
+
+
+
+.alert.alert-success {
+    background: #007A5A !important;
+    border: #007A5A !important;
+}
+
+.kt-switch.kt-switch--outline.kt-switch--success input:checked ~ span:after {
+    background: #007A5A !important;
+}
+
+.kt-badge {
+    font-size: 0.9rem;
+}
+
+.btn-success, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
+    background-color: #007A5A !important;
+    border-color: #007A5A !important;
+}
+
+.kt-subheader .kt-subheader__main .kt-subheader__desc {
+    color: #5C6284;
+}
+
+.kt-datatable > .kt-datatable__pager > .kt-datatable__pager-info .kt-datatable__pager-size .btn.dropdown-toggle {
+    color: #32489F
+}
+
+main {
+    height: 100%;
+}

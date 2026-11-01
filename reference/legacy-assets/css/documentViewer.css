@@ -1,0 +1,17 @@
+.kt-quick-panel--right #documentViewerDrawer {
+  width: 75% !important;
+  right: -75% !important;
+  overflow: hidden;
+}
+.kt-quick-panel--right #documentViewerDrawer.kt-quick-panel.kt-quick-panel--on {
+  right: 0 !important;
+}
+.kt-quick-panel--right img#documentLoader {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/*# sourceMappingURL=documentViewer.css.map */
