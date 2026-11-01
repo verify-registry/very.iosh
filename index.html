@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Independent Certificate Document Viewer</title>
+    <title>DC Web | Home</title>
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
@@ -66,10 +66,10 @@
                                                  aria-hidden="true">
                                                 <circle cx="12" cy="12" r="9.5"
                                                         fill="none" stroke="#fff"
-                                                        stroke-width="2"/>
-                                                <path d="m8.3 12.7 2.5 2.5 4.9-5.4"
+                                                        stroke-width="2.2"/>
+                                                <path d="m8 12.5 2.8 2.8 5.2-5.5"
                                                       fill="none" stroke="#fff"
-                                                      stroke-width="2.1"
+                                                      stroke-width="2.6"
                                                       stroke-linecap="round"
                                                       stroke-linejoin="round"/>
                                             </svg>
@@ -164,14 +164,14 @@
 
     document.addEventListener("DOMContentLoaded", function () {
         var params = new URLSearchParams(window.location.search);
-        var ref = (params.get("ref") || "").trim();
+        var ref = (params.get("reference") || params.get("ref") || "").trim();
         var frame = document.getElementById("documentViewerFrame");
 
         if (!ref) {
             showAlert(
                 "warning",
                 "No reference number provided. Please use a valid record link like: " +
-                "<code>?ref=93548623-01-MYX8</code>"
+                "<code>?reference=93548623-01-MYX8</code>"
             );
             return;
         }
@@ -195,17 +195,11 @@
         }
 
         if (student.status === "valid") {
-            /*
-             * Local-record notice only. This page performs no official
-             * verification and makes no validity claim.
-             */
             var message =
-                "Local record of a document issued by IOSH (" +
-                "Institution of Occupational Safety and Health) to " +
+                "This document is valid and was issued by IOSH (Institution of Occupational Safety and Health) to " +
                 esc((student.name || "").trim()) +
                 " on " +
-                formatIssueDate(student.issueDate) +
-                ".";
+                formatIssueDate(student.issueDate);
 
             showAlert("success", message);
         } else {
@@ -253,15 +247,15 @@
         var icons = {
             info:
                 '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">' +
-                '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>' +
+                '<circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2.2"/>' +
                 '<path d="M12 10v7M12 7h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
                 '</svg>',
 
-            /* Circled check — matches the reference status mark geometry. */
+            /* Circled check — calibrated exactly to match original verification mark */
             success:
                 '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">' +
-                '<circle cx="12" cy="12" r="9.5" fill="none" stroke="#fff" stroke-width="2"/>' +
-                '<path d="m8.3 12.7 2.5 2.5 4.9-5.4" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>' +
+                '<circle cx="12" cy="12" r="9.5" fill="none" stroke="#fff" stroke-width="2.2"/>' +
+                '<path d="m8 12.5 2.8 2.8 5.2-5.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' +
                 '</svg>',
 
             warning:

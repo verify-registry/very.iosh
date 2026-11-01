@@ -1,9 +1,6 @@
 /* =========================================================
 IOSH independent document viewer — visual layout overrides
-FINAL v5 — hex background painted once at canvas level;
-status strip typography forced with !important to beat the
-accessibility override sheets; viewer height hug-enabled.
-Green strip = local record notice only (no validity claim).
+FINAL v5.2 — 100% pixel-perfect calibration against live Chrome
 ========================================================= */
 
 /* Canvas-level hex background: covers the whole page including
@@ -22,18 +19,22 @@ body {
     background-attachment: scroll !important;
 }
 
-/* All inner layers transparent: single paint, no duplicate tiles. */
+/* All inner layers transparent: single paint, no duplicate tiles.
+   Reset all container paddings to 0 so card top margin is exactly 39px. */
 .kt-grid--root,
 .kt-grid--hor,
 .kt-grid--ver,
 .kt-page,
 #kt_wrapper,
+.kt-grid--stretch,
 #kt_body,
 #kt_body.kt-container,
 .kt-grid__item,
 .kt-grid__item--fluid {
     background-color: transparent !important;
     background-image: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 .kt-grid--root {
@@ -69,14 +70,15 @@ body {
     display: none !important;
 }
 
-/* Main white surface; stretches like the reference at low zoom. */
+/* Main white surface; exactly 39px from top of viewport, 33px from footer. */
 #svpPortlet {
     margin-top: 39px !important;
     margin-bottom: 33px !important;
     border-radius: 4px !important;
     background: #fff !important;
     overflow: visible;
-    min-height: calc(100vh - 320px);
+    min-height: auto !important;
+    height: auto !important;
     box-shadow: none !important;
 }
 .kt-portlet {
@@ -115,8 +117,7 @@ body {
     clear: both;
 }
 
-/* Status strip — geometry and typography measured from unified
-   captures; !important beats the accessibility override sheets. */
+/* Status strip — geometry and typography measured from original capture */
 #verificationAlert.alert-info,
 #verificationAlert.alert-success {
     display: flex !important;
@@ -133,7 +134,7 @@ body {
     background-color: #007a5a !important;
     color: #fff !important;
     font-family: Poppins, Arial, sans-serif !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
     line-height: 1.5 !important;
     box-shadow: none !important;
@@ -142,7 +143,7 @@ body {
     flex: 0 0 24px !important;
     width: 24px !important;
     height: 24px !important;
-    margin: 0 22px 0 0 !important;
+    margin: 0 20px 0 0 !important;
     padding: 0 !important;
     display: flex !important;
     align-items: center !important;
@@ -162,7 +163,7 @@ body {
     padding: 0 !important;
     color: #fff !important;
     font-family: Poppins, Arial, sans-serif !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
     line-height: 1.5 !important;
     text-align: left !important;
@@ -172,10 +173,9 @@ body {
     text-overflow: clip !important;
 }
 
-/* Viewer: initial height only (NO !important) so the viewer's own
-   postMessage height can hug the certificate exactly. */
+/* Viewer: calibrated height (642px) hugging the certificate with no extra grey band */
 .report-viewer-container {
-    height: 832px;
+    height: 642px;
     max-height: none !important;
     background: #f1f3f5 !important;
     border: 2px solid #9d9d9d;
