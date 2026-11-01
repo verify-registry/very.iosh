@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Independent Document Viewer</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
+<script>if (typeof pdfjsLib === "undefined") { document.write('<script src="../assets/js/pdf.min.js"><\/script>'); }</script>
 <style>
 :root {
     color-scheme: light;
@@ -12,7 +13,7 @@
     --toolbar-bg: #fbfbfb;
     --toolbar-line: #d9d9d9;
     --icon: #87919a;
-    --viewer-bg: #f1f3f5;
+    --viewer-bg: #f1f1f1;
     --active-bg: #e4eaf3;
     --active-line: #c8d5e6;
     --ui-font: Arial, "Segoe UI", sans-serif;
@@ -1160,7 +1161,7 @@ button:focus-visible {
 
     try {
         pdfjsLib.GlobalWorkerOptions.workerSrc =
-            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+            "../assets/js/pdf.worker.min.js";
 
         pdfjsLib.getDocument({ url: state.pdfUrl }).promise.then(async function (pdf) {
             state.pdf = pdf;
