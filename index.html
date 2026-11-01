@@ -17,7 +17,51 @@
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/overrides-accessibility-mvc.css" rel="stylesheet">
     <link href="assets/css/overrides-accessibility.css" rel="stylesheet">
+    <link href="assets/css/documentViewer.css" rel="stylesheet">
     <link href="assets/css/original-match.css?v=20261102" rel="stylesheet">
+
+    <style>
+    html, body, .kt-grid--hor, .kt-page {
+        background-color: #061128 !important;
+        background-image: linear-gradient(rgba(4, 12, 32, 0.58), rgba(4, 12, 32, 0.58)), url('./assets/images/hex_map_bg.png') !important;
+        background-repeat: repeat !important;
+        background-size: auto, 2560px auto !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    #m_header {
+        display: block !important;
+        height: 22px !important;
+        min-height: 22px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+    }
+    #kt_body {
+        padding-top: 0 !important;
+        padding-bottom: 22px !important;
+    }
+    #svpPortlet {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    #svpPortlet > .kt-portlet__body {
+        padding: 22px 25px 25px 25px !important;
+    }
+    .kt-header__brand-logo.mb-4 {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 18px !important;
+    }
+    .kt-header__brand-logo-default {
+        max-height: 62px !important;
+        width: auto !important;
+    }
+    .kt-header__brand-sublogo-default {
+        max-height: 68px !important;
+        width: auto !important;
+    }
+    </style>
 </head>
 
 <body class="print-progress--fixed kt-page--loading-enabled kt-page--fixed kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-subheader--enabled kt-subheader--transparent page-dashboard">
