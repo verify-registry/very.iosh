@@ -295,3 +295,36 @@ body {
         bottom: 16px;
     }
 }
+
+/* ==== v5.2 same-environment recalibration ==== */
+.kt-page, #kt_wrapper, #kt_body, .kt-grid--ver, .kt-grid--stretch {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+#svpPortlet { margin-top: 39px !important; }
+.kt-portlet__body { padding: 42px 33px 37px !important; }
+.kt-header__brand-logo.mb-4 { margin-bottom: 34px !important; }
+.kt-header__brand-logo .kt-header__brand-logo-default { width: 208px !important; }
+.kt-header__brand-logo .kt-header__brand-sublogo-default { max-height: 96px !important; }
+#verificationAlert.alert-info,
+#verificationAlert.alert-success {
+    min-height: 57px !important;
+    padding: 15px 24px !important;
+    margin: 0 0 33px !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
+#verificationAlert .alert-icon {
+    flex: 0 0 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin: 0 22px 0 0 !important;
+}
+#verificationAlert .alert-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+}
+#verificationAlert .alert-text {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
